@@ -3,8 +3,8 @@ pragma solidity >= 0.7.0 < 0.9.0;
 
 contract HouseContract {
     uint public num;
-    constructor(uint n) {
-        num = n;
+    constructor() {
+        num = 0;
     }
 
     function add(uint n) public {
