@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 contract BankContract {
     uint8 private clientCount;
     mapping (address => uint) private balances;
-    address public owner;
+    address payable public owner;
 
 
     constructor() public payable {
