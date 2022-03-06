@@ -8,9 +8,7 @@ contract BankContract {
 
 
     constructor() public payable {
-        require(msg.value == 30 ether, "30 ether initial");
-        
-        owner = msg.sender;
+        owner = payable(msg.sender);
         clientCount = 0;
     }
 
@@ -23,7 +21,7 @@ contract BankContract {
         
         if (withdrawAmount <= balances[msg.sender]) {
             balances[msg.sender] -= withdrawAmount;
-            msg.sender.transfer(withdrawAmount);
+            payable(msg.sender).transfer(withdrawAmount);
         }
         return balances[msg.sender];
     }
