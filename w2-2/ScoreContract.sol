@@ -7,8 +7,6 @@ contract ScoreContract {
 
     address teacher;
 
-    uint score;
-
     constructor() public {
         teacher = msg.sender;
     }
@@ -23,7 +21,15 @@ contract ScoreContract {
         }
     }
 
-    function setScore(uint new_score) public onlyOwner {
-        score = new_score;
+    function setScore(address student, uint new_score) public onlyOwner {
+        if(msg.sender == teacher) {
+            if(new_score >=0 && new_score <= 100) {
+            scores[student] = new_score;
+            }
+        }
     }
+}
+
+interface SetScoreIntf {
+    function setScore(address student, uint score) external;
 }
